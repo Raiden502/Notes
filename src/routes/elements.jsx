@@ -12,9 +12,13 @@ export const DashBoardLayout = Loadable(
 );
 
 export const PublishNewNote = Loadable(
-	lazy(()=> import("../pages/dashboard/PublishNewNote.jsx"),)
-)
+	lazy(() => import("../pages/dashboard/PublishNewNote.jsx")),
+);
 
 export const PublishListNote = Loadable(
-	lazy(()=> import("../pages/dashboard/PublishListNote.jsx"))
-)
+	lazy(() => import("../pages/dashboard/PublishListNote.jsx")),
+);
+
+export const SupportChatting = Loadable(
+	lazy(() => import("../pages/dashboard/chat.jsx")),
+);
