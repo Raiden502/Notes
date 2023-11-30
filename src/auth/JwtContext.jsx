@@ -63,6 +63,7 @@ export function AuthProvider({ children }) {
 	const storageAvaliable = localStorageAvailable();
 
 	const login = useCallback(async (email, password) => {
+		console.log("data", email)
 		await axiosInstance
 			.post("/login", {
 				email,
