@@ -3,8 +3,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import MainLayout from "./Main";
 import Header from "./header/Header";
-import NavHorizontal from "../dashboard/navigation/NavHorizontal";
-import NavVertical from "../dashboard/navigation/NavVertical";
+import NavHorizontal from "src/dashboard/navigation/NavHorizontal";
+import NavVertical from "src/dashboard/navigation/NavVertical";
 
 function DashBoardLayout() {
 	const isSmallScreen = useMediaQuery("(max-width:600px)");

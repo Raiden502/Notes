@@ -3,7 +3,7 @@ import {useCallback, useContext, useState} from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import {AuthContext} from "../../auth/JwtContext.jsx";
+import {AuthContext} from "src/auth/JwtContext.jsx";
 
 function RegisterPage(){
     const {register} = useContext(AuthContext)

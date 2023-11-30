@@ -6,16 +6,16 @@ import {
 	useContext,
 	useCallback,
 } from "react";
-import { useSelector, useDispatch } from "../../redux/store";
+import { useSelector, useDispatch } from "src/redux/store";
 import {
 	setNewNotes,
 	setIsPublished,
 	editNotes,
-} from "../../redux/slices/Publish";
+} from "src/redux/slices/Publish";
 
 import { v4 as uuidv4 } from "uuid";
 import InputNewNotes from "./InputNewNotes";
-import { SnackBarContext } from "../../providers/snackbar/SnackbarContext";
+import { SnackBarContext } from "src/providers/snackbar/SnackbarContext";
 
 const initialState = {
 	notesId: "",

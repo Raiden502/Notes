@@ -1,4 +1,4 @@
-import SupportChatting from "../../sections/support/SupportChatting"
+import SupportChatting from "src/sections/support/SupportChatting"
 
 function SupportChat(){
     return(

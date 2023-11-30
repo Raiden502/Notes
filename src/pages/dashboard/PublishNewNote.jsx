@@ -1,4 +1,4 @@
-import NewNotes from "../../sections/publish/createNotes";
+import NewNotes from "src/sections/publish/createNotes";
 
 function PublishNewNote() {
 	return (

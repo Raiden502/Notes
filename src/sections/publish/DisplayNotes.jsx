@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSelector, useDispatch } from "../../redux/store";
-import { setIsPublished } from "../../redux/slices/Publish";
+import { useSelector, useDispatch } from "src/redux/store";
+import { setIsPublished } from "src/redux/slices/Publish";
 import ListNotes from "./listNotes";
 
 function PublishListParent() {

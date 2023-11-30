@@ -9,10 +9,8 @@ import {
 import PropTypes from "prop-types";
 
 // local imports
-import localStorageAvailable from "../utils/localstorage";
-import axiosInstance from "../utils/axios";
-
-
+import localStorageAvailable from "src/utils/localstorage";
+import axiosInstance from "src/utils/axios";
 
 const IntialReducerState = {
 	IsAuthenticated: false,

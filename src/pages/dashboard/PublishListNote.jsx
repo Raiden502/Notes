@@ -1,4 +1,4 @@
-import PublishListParent from "../../sections/publish/DisplayNotes";
+import PublishListParent from "src/sections/publish/DisplayNotes";
 
 function PublishListNote() {
 	return <PublishListParent />;

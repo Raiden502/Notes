@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import {useDispatch, useSelector} from "../../redux/store.jsx"
+import {useDispatch, useSelector} from "src/redux/store.jsx"
 import {useEffect} from "react";
 
 function PostsList(){
