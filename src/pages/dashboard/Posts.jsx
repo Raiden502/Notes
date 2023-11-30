@@ -1,18 +1,9 @@
-import { Box } from "@mui/material";
-import {useDispatch, useSelector} from "src/redux/store.jsx"
-import {useEffect} from "react";
-
+import Posts from 'src/sections/posts/Posts'
 function PostsList(){
-    const dispatch = useDispatch();
-    const publishState = useSelector((state)=>state.publish);
-    
-    useEffect(()=>{}, []);
-    
-    console.log("data", publishState);
     return (
-        <Box>
-            Hi
-        </Box>
+        <>
+        <Posts />
+        </>
     )
 }
 

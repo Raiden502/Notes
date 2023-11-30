@@ -35,6 +35,7 @@ const PublishSlice = createSlice({
 			state.publisherId = action.payload.publisherId;
 		},
 		setNewNotes(state, action) {
+			console.log("publish", action.payload)
 			const data = {
 				notesId: action.payload.notesId,
 				title: action.payload.title,

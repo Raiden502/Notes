@@ -11,33 +11,43 @@ import {
     SupportChatting, VerifyCode
 } from "./elements.jsx";
 
+import AuthGuard from "../auth/AuthGuard.jsx";
+import GuestGuard from "../auth/GuestGuard.jsx";
+
 
 function Router() {
 	return useRoutes([
 		{
 			path:'/',
-			element: <Navigate to="/auth/login" />,
+			element: <Navigate to="/auth/login" replace={true} />,
+		},
+		{
+			path:'*',
+			element: <Navigate to="/404" replace={true} />,
 		},
 		{
 			path:'/auth',
 			children:[
 				{
 					path: 'login',
-					element: <LoginPage />,
+					element: (<GuestGuard><LoginPage /></GuestGuard>),
 				},
 				{
 					path: 'register',
-					element: <RegisterPage />,
+					element:(<GuestGuard><RegisterPage /></GuestGuard>),
 				},
 				{
 					path: 'verify',
-					element: <VerifyCode />,
+					element:(<GuestGuard><VerifyCode /></GuestGuard>),
 				},
 			]
 		},
 		{
 			path: "/dashboard",
-			element: <DashBoardLayout />,
+			element: (
+				<AuthGuard>
+					<DashBoardLayout />
+				</AuthGuard>),
 			children: [
 				{
 					index: true,

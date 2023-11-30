@@ -7,7 +7,6 @@ InputNewNotes.propTypes = {
 	editNewNote: PropTypes.func,
 	publishNewNote: PropTypes.func,
 	newNote: PropTypes.obj,
-	delayEvent:PropTypes.func
 };
 
 function InputNewNotes({
@@ -16,7 +15,6 @@ function InputNewNotes({
 	editNewNote,
 	publishNewNote,
 	newNote,
-	delayEvent,
 }) {
 	return (
 		<>
@@ -40,18 +38,6 @@ function InputNewNotes({
 						<Button variant="contained" onClick={publishNewNote}>
 							publish
 						</Button>
-						<Select
-							labelId="demo-simple-select-label"
-							id="demo-simple-select"
-							value={newNote.delay}
-							label="Age"
-							onChange={delayEvent}
-						>
-							<MenuItem value={0}>ZERO</MenuItem>
-							<MenuItem value={10}>Ten</MenuItem>
-							<MenuItem value={2}>Twenty</MenuItem>
-							<MenuItem value={3}>Thirty</MenuItem>
-						</Select>
 					</Stack>
 				</Stack>
 			</Box>

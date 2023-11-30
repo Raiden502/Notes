@@ -14,7 +14,7 @@ import axiosInstance from "src/utils/axios";
 
 const IntialReducerState = {
 	IsAuthenticated: false,
-	user: "Pri",
+	user: "",
 	IsIntialized: false,
 };
 

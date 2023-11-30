@@ -100,13 +100,6 @@ function NewNotes() {
 		});
 	}, []);
 
-	const handleDelayChange = useCallback((event) => {
-		setNoteEvent({
-			type: DELAY,
-			payload: { delay: event.target.value * 1000 },
-		});
-	}, []);
-
 	const handleDescChange = useCallback((event) => {
 		setNoteEvent({
 			type: NEWDESC,
@@ -118,6 +111,7 @@ function NewNotes() {
 		const check = publishState.notes.some(
 			(obj) => obj?.notesId === newNote.notesId,
 		);
+		console.log(check)
 		if (check) {
 			dispatch(editNotes(newNote));
 		} else {
@@ -128,18 +122,22 @@ function NewNotes() {
 			body: "Saved Succesfull",
 			customDelay: newNote.delay,
 		});
-	}, []);
+	}, [newNote]);
 
 	const publishNewNote = useCallback(() => {
-		if (newNote.notesId) {
+		const check = publishState.notes.some(
+			(obj) => obj?.notesId === newNote.notesId,
+			);
+		if (check) {
 			dispatch(setIsPublished({ notesId: newNote.notesId }));
 			scheduleNotificationEvent({
 				severity: "success",
 				body: "Published Succesfull",
-				// customDelay: newNote.delay,
 			});
 		} else {
+			console.log("new note", newNote)
 			dispatch(setNewNotes(newNote));
+			console.log("set note", newNote)
 			dispatch(setIsPublished({ notesId: newNote.notesId }));
 			scheduleNotificationEvent({
 				severity: "warning",
@@ -150,8 +148,9 @@ function NewNotes() {
 		setNoteEvent({
 			type: RESET,
 		});
-	},[])
+	},[newNote])
 
+	console.log("notes", publishState)
 	return (
 		<>
 			<InputNewNotes
@@ -160,7 +159,6 @@ function NewNotes() {
 				editNewNote={editNewNote}
 				publishNewNote={publishNewNote}
 				newNote={newNote}
-				delayEvent={handleDelayChange}
 			/>
 		</>
 	);
