@@ -1,12 +1,14 @@
-import { useEffect, useState, useReducer, useRef } from "react";
+import { useEffect, useState, useReducer, useRef, useContext } from "react";
+import { Box, Typography, TextField, Stack, Button } from "@mui/material";
+import { v4 as uuidv4 } from "uuid";
+
+import { ThemeContext } from "../../providers/themes/ThemeProvider";
 import { useSelector, useDispatch } from "../../redux/store";
 import {
 	setNewNotes,
 	setIsPublished,
 	editNotes,
 } from "../../redux/slices/Publish";
-import { Box, Typography, TextField, Stack, Button } from "@mui/material";
-import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
 	notesId: "",
@@ -69,6 +71,7 @@ function reducer(state, action) {
 }
 
 function PublishNewNote() {
+	const { theme, changeTheme, colorPicker } = useContext(ThemeContext);
 	const dispatch = useDispatch();
 	const publishState = useSelector((state) => state.publish);
 	const [newNote, setNoteEvent] = useReducer(reducer, initialState);
@@ -110,6 +113,8 @@ function PublishNewNote() {
 		});
 	};
 
+	console.log("asd", colorPicker, theme);
+
 	return (
 		<>
 			<Box sx={{ border: "2px solid black", p: 2 }}>
@@ -126,11 +131,27 @@ function PublishNewNote() {
 						onChange={handleDescChange}
 					></TextField>
 					<Stack direction="row" gap={2} padding={2}>
-						<Button variant="contained" onClick={editNewNote}>
+						<Button
+							variant="contained"
+							sx={{ backgroundColor: theme.dark1 }}
+							onClick={editNewNote}
+						>
 							save
 						</Button>
-						<Button variant="contained" onClick={publishNewNote}>
+						<Button
+							variant="contained"
+							sx={{ backgroundColor: theme.bright }}
+							onClick={publishNewNote}
+						>
 							publish
+						</Button>
+						<Button
+							variant="contained"
+							onClick={() => {
+								changeTheme(colorPicker.purple);
+							}}
+						>
+							color
 						</Button>
 					</Stack>
 				</Stack>

@@ -1,20 +1,23 @@
 import { Outlet } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Box, Stack } from "@mui/material";
 
 import MainLayout from "./Main";
 import Header from "./header/Header";
-import NavHorizontal from "../dashboard/navigation/NavHorizontal";
 import NavVertical from "../dashboard/navigation/NavVertical";
 
 function DashBoardLayout() {
-	const isSmallScreen = useMediaQuery("(max-width:600px)");
 	return (
 		<>
-			<Header />
-			{isSmallScreen ? <NavVertical /> : <NavHorizontal />}
-			<MainLayout>
-				<Outlet />
-			</MainLayout>
+			<Stack direction="row">
+				<NavVertical />
+				<Box sx={{width:'100%', height:'100%'}}>
+					<Header />
+					<MainLayout>
+						<Outlet />
+					</MainLayout>
+				</Box>
+			</Stack>
 		</>
 	);
 }
