@@ -9,14 +9,12 @@ import {
 import PropTypes from "prop-types";
 
 // local imports
-import localStorageAvailable from "../utils/localstorage";
-import axiosInstance from "../utils/axios";
-
-
+import localStorageAvailable from "src/utils/localstorage";
+import axiosInstance from "src/utils/axios";
 
 const IntialReducerState = {
 	IsAuthenticated: false,
-	user: "Pri",
+	user: "",
 	IsIntialized: false,
 };
 
@@ -63,6 +61,7 @@ export function AuthProvider({ children }) {
 	const storageAvaliable = localStorageAvailable();
 
 	const login = useCallback(async (email, password) => {
+		console.log("data", email)
 		await axiosInstance
 			.post("/login", {
 				email,

@@ -17,24 +17,22 @@ export const AUTH_ROOTS = {
 export const DASHBOARD_ROOTS = {
     root:ROOTS_DASHBOARD,
     notes:{
-        root:path(ROOTS_DASHBOARD, '/notes'),
-        onlineNotes:path(ROOTS_DASHBOARD, '/onlinenotes'),
-        browseNotes:path(ROOTS_DASHBOARD, '/browsenotes'),
+        root:path(ROOTS_DASHBOARD, '/newnotes'),
+        listNotes:path(ROOTS_DASHBOARD, '/list'),
     },
     profile:{
         root:path(ROOTS_DASHBOARD, '/profile'),
         edit:path(ROOTS_DASHBOARD, '/edit'),
     },
-    publication:{
-        root:path(ROOTS_DASHBOARD, '/publications'),
-        newPubication:path(ROOTS_DASHBOARD, '/newpublication'),
-        editPublication:path(ROOTS_DASHBOARD, '/editpublication'),
+    support:{
+        root:path(ROOTS_DASHBOARD, '/chat'),
     }
 }
 
 export const PAGE_ROOTS = {
     comingSoon: '/coming-soon',
     maintenance: '/maintenance',
+    mailUnsubscribe:'/mail-unsubscribe',
     pricing: '/pricing',
     payment: '/payment',
     about: '/about-us',
@@ -43,7 +41,6 @@ export const PAGE_ROOTS = {
     page403: '/403',
     page404: '/404',
     page500: '/500',
-    components: '/components',
 }
 
 export const DOCS = {

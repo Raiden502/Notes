@@ -1,9 +1,10 @@
-import {Box} from '@mui/material'
-
-function Posts(){
-    return(
-        <Box></Box>
+import Posts from 'src/sections/posts/Posts'
+function PostsList(){
+    return (
+        <>
+        <Posts />
+        </>
     )
 }
 
-export default Posts
+export default PostsList

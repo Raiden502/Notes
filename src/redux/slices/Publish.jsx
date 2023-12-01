@@ -35,6 +35,7 @@ const PublishSlice = createSlice({
 			state.publisherId = action.payload.publisherId;
 		},
 		setNewNotes(state, action) {
+			console.log("publish", action.payload)
 			const data = {
 				notesId: action.payload.notesId,
 				title: action.payload.title,
@@ -55,10 +56,10 @@ const PublishSlice = createSlice({
 		},
 		setIsPublished(state, action) {
 			const data = state.notes.map((item) => {
-				if (item.notesId === action.payload.notesId) {
+				if (item?.notesId === action.payload.notesId) {
 					state.info.published += 1;
 					state.info.unpublished -= 1;
-					return { ...item, isPublished: true, publicationDate: "" };
+					return { ...item, isPublished: true, publicationDate: "txt" };
 				}
 				return item;
 			});
@@ -66,7 +67,7 @@ const PublishSlice = createSlice({
 		},
 		removeNotes(state, action) {
 			const data = state.notes.filter((item) => {
-				if (item.notesId === action.payload.notesId) {
+				if (item?.notesId === action.payload.notesId) {
 					if (item.isPublished) {
 						state.info.published -= 1;
 					} else {
@@ -80,7 +81,7 @@ const PublishSlice = createSlice({
 		},
 		editNotes(state, action) {
 			const data = state.notes.map((note) => {
-				if (note.notesId === action.payload.notesId) {
+				if (note?.notesId === action.payload.notesId) {
 					return {
 						...note,
 						title: action.payload.title,
@@ -93,7 +94,7 @@ const PublishSlice = createSlice({
 		},
 		removePublication(state, action) {
 			const data = state.notes.map((note) => {
-				if (note.notesId === action.payload.notesId) {
+				if (note?.notesId === action.payload.notesId) {
 					state.info.unpublished += 1;
 					state.info.published -= 1;
 					return {
