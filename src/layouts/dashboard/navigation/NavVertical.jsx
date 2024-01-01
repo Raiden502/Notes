@@ -1,14 +1,17 @@
 import { Box, Stack, IconButton, Drawer } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import {useContext} from "react";
+import {ThemesContext} from "../../../providers/themes/ThemeProvider.jsx";
 
 const NAVDashboard = 280;
 
 function NavVertical() {
+	const {theme}  = useContext(ThemesContext)
 	const renderContent = (
 		<Box
 			sx={{
 				height: "100%",
-				backgroundColor: "transparent",
+				backgroundColor: theme.light1,
 				overflowY: "scroll",
 			}}
 		>
@@ -24,7 +27,8 @@ function NavVertical() {
 						border: "1px solid black",
 						width:220,
 						height:100,
-						textAlign:'center'
+						textAlign:'center',
+						backgroundColor:theme.dark1
 					}}
 				>
 					account

@@ -11,12 +11,15 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import {useContext} from "react";
+import {ThemesContext} from "../../providers/themes/ThemeProvider.jsx";
 
 
 export default function PostInfoCard({title, description, publicationDate}) {
+    const {theme} = useContext(ThemesContext)
    
     return (
-        <Card  variant="outlined" sx={{borderRadius:5, marginBottom:4,  overflow: 'visible' }}>
+        <Card  variant="outlined" sx={{borderRadius:5, marginBottom:4,  overflow: 'visible', backgroundColor:theme.light1 }}>
             <CardHeader
                 avatar={
                   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

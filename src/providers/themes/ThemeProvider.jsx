@@ -9,6 +9,7 @@ import {
 import PropTypes from "prop-types";
 import colorUtils from "../../components/color-utils/utils";
 
+
 const INTIAL = "INTIAL";
 const CHANGE = "CHANGE";
 
@@ -18,19 +19,23 @@ const IntialReducerState = {
 
 const Reducer = (state, action) => {
 	if (action.type === INTIAL) {
+		const data =colorUtils.yellow
+		localStorage.setItem('themes', 'yellow')
 		return {
-			CurrentColor: colorUtils.yellow,
+			CurrentColor: data,
 		};
 	}
 	if (action.type === CHANGE) {
+		const data = colorUtils[action.payload.color]
+		localStorage.setItem('themes', action.payload.color)
 		return {
-			CurrentColor: colorUtils[action.payload.color],
+			CurrentColor: data,
 		};
 	}
 	return state;
 };
 
-export const ThemeContext = createContext(null);
+export const ThemesContext = createContext(null);
 
 ThemeProvider.propTypes = {
 	children: PropTypes.node,
@@ -48,6 +53,25 @@ export function ThemeProvider({ children }) {
 		});
 	};
 
+	const Intialize = ()=>{
+		const theme = window.localStorage.getItem('themes')
+		console.log("theme", theme)
+		if (theme && theme!==undefined) {
+			console.log("themess", theme)
+			Dispatch({
+				type: CHANGE,
+				payload: {
+					color: theme,
+				},
+			});
+		}
+		else{
+			Dispatch({
+				type: INTIAL,
+			});
+		}
+	}
+
 	const memoizedValue = useMemo(
 		() => ({
 			changeTheme,
@@ -58,17 +82,12 @@ export function ThemeProvider({ children }) {
 	);
 
 	useEffect(() => {
-		if (state.CurrentColor === null) {
-
-			Dispatch({
-				type: INTIAL,
-			});
-		}
-	}, [state.CurrentColor]);
+		Intialize()
+	}, []);
 
 	return (
-		<ThemeContext.Provider value={memoizedValue}>
+		<ThemesContext.Provider value={memoizedValue}>
 			{children}
-		</ThemeContext.Provider>
+		</ThemesContext.Provider>
 	);
 }

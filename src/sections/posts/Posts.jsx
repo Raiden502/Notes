@@ -1,12 +1,14 @@
 import {Box, Grid, Stack} from "@mui/material";
 import {useDispatch, useSelector} from "src/redux/store.jsx"
-import {useEffect, useMemo} from "react";
+import {useContext, useEffect, useMemo} from "react";
 
 import PostInfoCard from './Cards.jsx'
+import {ThemesContext} from "../../providers/themes/ThemeProvider.jsx";
 
 function Posts(){
     const dispatch = useDispatch();
     const publishState = useSelector((state)=>state.publish);
+    const {theme} = useContext(ThemesContext)
 
     useEffect(()=>{}, []);
     
@@ -17,7 +19,7 @@ function Posts(){
     console.log("data", publishState);
     return (
         <Grid container>
-        <Grid xs={3}>
+            <Grid xs={3} sx={{backgroundColor:'black'}}>
             <Box sx={{border:'1px solid black'}}>left side bar</Box>
         </Grid>
             <Grid xs={6} sx={{}}>
@@ -26,7 +28,8 @@ function Posts(){
                     flexDirection: 'column',
                     overflowY: 'scroll',
                     padding:5,
-                    height: 800, // Set the desired height for the scrollable area
+                    height: 800,
+                    backgroundColor:theme.light2,
                 }}>
                 {
                     memoized.notesArray.map((state, index)=>(
@@ -35,7 +38,7 @@ function Posts(){
                 }
             </Box>
         </Grid>
-        <Grid xs={3}>
+            <Grid xs={3} sx={{backgroundColor:'black'}}>
             <Box sx={{border:'1px solid black'}}>right side bar</Box>
         </Grid>
     </Grid>)

@@ -4,7 +4,6 @@ import { Box, Stack } from "@mui/material";
 
 import MainLayout from "./Main";
 import Header from "./header/Header";
-import NavHorizontal from "src/layouts/dashboard/navigation/NavHorizontal";
 import NavVertical from "src/layouts/dashboard/navigation/NavVertical";
 
 function DashBoardLayout() {

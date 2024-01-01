@@ -36,17 +36,19 @@ const PublishSlice = createSlice({
 		},
 		setNewNotes(state, action) {
 			console.log("publish", action.payload)
-			const data = {
-				notesId: action.payload.notesId,
-				title: action.payload.title,
-				description: action.payload.description,
-				tags: action.payload.tags,
-				isPublished: false,
-				publicationDate: null,
-			};
-			state.notes = [...state.notes, data];
-			state.info.total += 1;
-			state.info.unpublished += 1;
+			if(action.payload.notesId && action.payload.title){
+				const data = {
+					notesId: action.payload.notesId,
+					title: action.payload.title,
+					description: action.payload.description,
+					tags: action.payload.tags,
+					isPublished: false,
+					publicationDate: null,
+				};
+				state.notes = [...state.notes, data];
+				state.info.total += 1;
+				state.info.unpublished += 1;
+			}
 		},
 		setCurrentNote(state, action) {
 			state.currentNote.notesId = action.payload.notesId;
